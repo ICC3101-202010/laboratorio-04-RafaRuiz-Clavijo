@@ -69,6 +69,7 @@ namespace Maquinas
                     {
                         Console.WriteLine("Todas las maquinas trabajan con regularidad");
                     }
+                    System.Threading.Thread.Sleep(1000);
                     Console.WriteLine();
                     minutos += 15;
 
@@ -77,12 +78,14 @@ namespace Maquinas
             }
 
             Console.WriteLine("22:00 Hora de cerrar la fabrica");
+            System.Threading.Thread.Sleep(1000);
             Console.WriteLine();
             maqrec.Off();
             maqalm.Off();
             maqes.Off();
             maqem.Off();
             maqver.Off();
+            System.Threading.Thread.Sleep(3000);
 
         }
     }

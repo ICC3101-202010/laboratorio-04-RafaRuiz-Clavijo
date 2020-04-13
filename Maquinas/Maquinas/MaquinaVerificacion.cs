@@ -15,11 +15,13 @@ namespace Maquinas
         public override void Off()
         {
             Console.WriteLine("La maquina de verificacion se apago");
+            System.Threading.Thread.Sleep(1000);
         }
 
         public override void On()
         {
             Console.WriteLine("La maquina de verificacion se encendio");
+            System.Threading.Thread.Sleep(1000);
         }
 
         public override void Restart()

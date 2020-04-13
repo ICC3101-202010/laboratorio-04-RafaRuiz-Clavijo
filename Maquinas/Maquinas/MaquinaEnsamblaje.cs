@@ -15,11 +15,13 @@ namespace Maquinas
         public override void Off()
         {
             Console.WriteLine("La maquina de ensamblaje se apago");
+            System.Threading.Thread.Sleep(1000);
         }
 
         public override void On()
         {
             Console.WriteLine("La maquina de ensamblaje se encendio");
+            System.Threading.Thread.Sleep(1000);
         }
 
         public override void Restart()
