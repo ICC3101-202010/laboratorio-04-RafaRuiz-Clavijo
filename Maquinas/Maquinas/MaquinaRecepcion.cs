@@ -8,19 +8,23 @@ namespace Maquinas
 {
     class MaquinaRecepcion : BaseMaquinas
     {
+        public MaquinaRecepcion(int memory)
+        {
+            this.memory = memory;
+        }
         public override void Off()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("La maquina de recepcion se apago");
         }
 
         public override void On()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("La maquina de recepcion se encendio");
         }
 
         public override void Restart()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("La maquina de recepcion esta colapsada, se va a reinciar la memoria");
         }
     }
 }

@@ -8,19 +8,23 @@ namespace Maquinas
 {
     class MaquinaEnsamblaje: BaseMaquinas
     {
+        public MaquinaEnsamblaje(int memory)
+        {
+            this.memory = memory;
+        }
         public override void Off()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("La maquina de ensamblaje se apago");
         }
 
         public override void On()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("La maquina de ensamblaje se encendio");
         }
 
         public override void Restart()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("La maquina de ensamblaje esta colapsada, se va a reinciar la memoria");
         }
     }
 }

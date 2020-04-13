@@ -8,19 +8,23 @@ namespace Maquinas
 {
     class MaquinaVerificacion: BaseMaquinas
     {
+        public MaquinaVerificacion(int memory)
+        {
+            this.memory = memory;
+        }
         public override void Off()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("La maquina de verificacion se apago");
         }
 
         public override void On()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("La maquina de verificacion se encendio");
         }
 
         public override void Restart()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("La maquina de verificacion esta colapsada, se va a reinciar la memoria");
         }
     }
 }

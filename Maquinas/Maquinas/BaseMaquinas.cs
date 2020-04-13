@@ -9,7 +9,7 @@ namespace Maquinas
     abstract class BaseMaquinas
     {
 
-        private int memory;
+        public int memory;
 
         abstract public void On();
         abstract public void Restart();

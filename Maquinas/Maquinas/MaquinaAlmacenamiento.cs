@@ -8,19 +8,23 @@ namespace Maquinas
 {
     class MaquinaAlmacenamiento: BaseMaquinas 
     {
+        public MaquinaAlmacenamiento(int memory)
+        {
+            this.memory = memory;
+        }
         public override void Off()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("La maquina de almacenamiento se apago");
         }
 
         public override void On()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("La maquina de almacenamiento se encendio");
         }
 
         public override void Restart()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("La maquina de almacenamiento esta colapsada, se va a reinciar la memoria");
         }
     }
 }
