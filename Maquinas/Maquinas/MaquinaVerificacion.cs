@@ -8,9 +8,10 @@ namespace Maquinas
 {
     class MaquinaVerificacion: BaseMaquinas
     {
-        public MaquinaVerificacion(int memory)
+        public MaquinaVerificacion(int memory, bool necesita_reparo)
         {
             this.memory = memory;
+            this.necesita_reparo = necesita_reparo;
         }
         public override void Off()
         {

@@ -8,9 +8,10 @@ namespace Maquinas
 {
     class MaquinaRecepcion : BaseMaquinas
     {
-        public MaquinaRecepcion(int memory)
+        public MaquinaRecepcion(int memory, bool necesita_reparo)
         {
             this.memory = memory;
+            this.necesita_reparo = necesita_reparo;
         }
         public override void Off()
         {

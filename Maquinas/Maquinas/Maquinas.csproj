@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseMaquinas.cs" />
+    <Compile Include="CPU_Central.cs" />
     <Compile Include="MaquinaAlmacenamiento.cs" />
     <Compile Include="MaquinaEmpaque.cs" />
     <Compile Include="MaquinaEnsamblaje.cs" />
