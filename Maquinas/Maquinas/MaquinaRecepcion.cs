@@ -6,12 +6,18 @@ using System.Threading.Tasks;
 
 namespace Maquinas
 {
-    class MaquinaRecepcion : BaseMaquinas
+    class MaquinaRecepcion : BaseMaquinas, MachineMemoryRestart
     {
-        public MaquinaRecepcion(int memory, bool necesita_reparo)
+        public MaquinaRecepcion(int memory)
         {
             this.memory = memory;
-            this.necesita_reparo = necesita_reparo;
+            this.contador = 0;
+        }
+
+        public int ResetCount()
+        {
+            Console.WriteLine("La maquina de recepcion se reinicio con exito");
+            return 0;
         }
         public override void Off()
         {
@@ -27,7 +33,8 @@ namespace Maquinas
 
         public override void Restart()
         {
-            Console.WriteLine("La maquina de recepcion esta colapsada, se va a reinciar la memoria");
+            Console.WriteLine("La maquina de recepcion esta colapsada, se va a reiniciar");
+            contador = ResetCount();
         }
     }
 }

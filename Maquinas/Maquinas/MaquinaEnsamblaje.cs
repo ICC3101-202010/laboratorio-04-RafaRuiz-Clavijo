@@ -6,13 +6,19 @@ using System.Threading.Tasks;
 
 namespace Maquinas
 {
-    class MaquinaEnsamblaje: BaseMaquinas
+    class MaquinaEnsamblaje: BaseMaquinas, MachineMemoryRestart
     {
-        public MaquinaEnsamblaje(int memory, bool necesita_reparo)
+        public MaquinaEnsamblaje(int memory)
         {
             this.memory = memory;
-            this.necesita_reparo = necesita_reparo;
+            this.contador = 0;
         }
+        public int ResetCount()
+        {
+            Console.WriteLine("La maquina de ensamblaje se reinicio con exito");
+            return 0;
+        }
+
         public override void Off()
         {
             Console.WriteLine("La maquina de ensamblaje se apago");
@@ -27,7 +33,8 @@ namespace Maquinas
 
         public override void Restart()
         {
-            Console.WriteLine("La maquina de ensamblaje esta colapsada, se va a reinciar la memoria");
+            Console.WriteLine("La maquina de ensamblaje esta colapsada, se va a reiniciar");
+            contador = ResetCount();
         }
     }
 }

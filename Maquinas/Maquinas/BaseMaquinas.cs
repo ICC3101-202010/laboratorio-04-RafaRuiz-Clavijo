@@ -10,7 +10,7 @@ namespace Maquinas
     {
 
         public int memory;
-        public bool necesita_reparo;
+        public int contador;
 
         abstract public void On();
         abstract public void Restart();

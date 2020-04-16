@@ -8,11 +8,11 @@ namespace Maquinas
 {
     public class CPU_Central
     {
-        MaquinaRecepcion maqrec = new MaquinaRecepcion(5,false);
-        MaquinaAlmacenamiento maqalm = new MaquinaAlmacenamiento(8,false);
-        MaquinaEnsamblaje maqes = new MaquinaEnsamblaje(3,false);
-        MaquinaEmpaque maqem = new MaquinaEmpaque(6,false);
-        MaquinaVerificacion maqver = new MaquinaVerificacion(7,false);
+        MaquinaRecepcion maqrec = new MaquinaRecepcion(5);
+        MaquinaAlmacenamiento maqalm = new MaquinaAlmacenamiento(8);
+        MaquinaEnsamblaje maqes = new MaquinaEnsamblaje(3);
+        MaquinaEmpaque maqem = new MaquinaEmpaque(6);
+        MaquinaVerificacion maqver = new MaquinaVerificacion(7);
         public void StartWork()
         {
             maqrec.On();
@@ -27,7 +27,6 @@ namespace Maquinas
             Console.WriteLine();
 
             int hora = 8;
-            int step = 0;
             while (hora < 22)
             {
                 int minutos = 0;
@@ -42,28 +41,32 @@ namespace Maquinas
                     {
                         Console.WriteLine("Hora actual: " + hora + ":0" + minutos);
                     }
-                    step++;
-                    if (step % maqrec.memory == 0)
+                    maqrec.contador += 1;
+                    maqalm.contador += 1;
+                    maqes.contador += 1;
+                    maqem.contador += 1;
+                    maqver.contador += 1;
+                    if (maqrec.contador >= maqrec.memory)
                     {
                         maqrec.Restart();
                         verificador = 0;
                     }
-                    if (step % maqalm.memory == 0)
+                    if (maqalm.contador >= maqalm.memory)
                     {
                         maqalm.Restart();
                         verificador = 0;
                     }
-                    if (step % maqes.memory == 0)
+                    if (maqes.contador >= maqes.memory)
                     {
                         maqes.Restart();
                         verificador = 0;
                     }
-                    if (step % maqem.memory == 0)
+                    if (maqem.contador >= maqem.memory)
                     {
                         maqem.Restart();
                         verificador = 0;
                     }
-                    if (step % maqver.memory == 0)
+                    if (maqver.contador >= maqver.memory)
                     {
                         maqver.Restart();
                         verificador = 0;
@@ -87,7 +90,6 @@ namespace Maquinas
             Console.WriteLine();
 
             int hora = 8;
-            int step = 0;
             int verificador = 1;
             while (hora < 22)
             {
@@ -102,30 +104,13 @@ namespace Maquinas
                     {
                         Console.WriteLine("Hora actual: " + hora + ":0" + minutos);
                     }
-                    step++;
-                    if (step % maqrec.memory == 0)
+                    maqrec.contador += 1;
+                    maqalm.contador += 1;
+                    maqes.contador += 1;
+                    maqem.contador += 1;
+                    maqver.contador += 1;
+                    if (maqrec.contador >= maqrec.memory || maqalm.contador >= maqalm.memory || maqes.contador >= maqes.memory || maqem.contador >= maqem.memory || maqver.contador >= maqver.memory)
                     {
-                        maqrec.necesita_reparo = true;
-                        verificador = 0;
-                    }
-                    if (step % maqalm.memory == 0)
-                    {
-                        maqalm.necesita_reparo = true;
-                        verificador = 0;
-                    }
-                    if (step % maqes.memory == 0)
-                    {
-                        maqes.necesita_reparo = true;
-                        verificador = 0;
-                    }
-                    if (step % maqem.memory == 0)
-                    {
-                        maqem.necesita_reparo = true;
-                        verificador = 0;
-                    }
-                    if (step % maqver.memory == 0)
-                    {
-                        maqver.necesita_reparo = true;
                         verificador = 0;
                     }
                     if (verificador == 0)
@@ -152,7 +137,7 @@ namespace Maquinas
                                 Console.WriteLine();
                                 if (opt2 == 1)
                                 {
-                                    if (maqrec.necesita_reparo == true)
+                                    if (maqrec.contador >= maqrec.memory)
                                     {
                                         maqrec.Restart();
                                     }
@@ -163,7 +148,7 @@ namespace Maquinas
                                 }
                                 if (opt2 == 2)
                                 {
-                                    if (maqalm.necesita_reparo == true)
+                                    if (maqalm.contador >= maqalm.memory)
                                     {
                                         maqalm.Restart();
                                     }
@@ -174,7 +159,7 @@ namespace Maquinas
                                 }
                                 if (opt2 == 3)
                                 {
-                                    if (maqes.necesita_reparo == true)
+                                    if (maqes.contador >= maqes.memory)
                                     {
                                         maqes.Restart();
                                     }
@@ -185,7 +170,7 @@ namespace Maquinas
                                 }
                                 if (opt2 == 4)
                                 {
-                                    if (maqem.necesita_reparo == true)
+                                    if (maqem.contador >= maqem.memory)
                                     {
                                         maqem.Restart();
                                     }
@@ -196,7 +181,7 @@ namespace Maquinas
                                 }
                                 if (opt2 == 5)
                                 {
-                                    if (maqver.necesita_reparo == true)
+                                    if (maqver.contador >= maqver.memory)
                                     {
                                         maqver.Restart();
                                     }
@@ -212,10 +197,9 @@ namespace Maquinas
                                 Console.WriteLine("2) No");
                                 Console.WriteLine("Indique el numero de la opcion");
                                 term = Convert.ToInt32(Console.ReadLine());
-                                if (maqrec.necesita_reparo == false && maqalm.necesita_reparo == false && maqes.necesita_reparo == false && maqem.necesita_reparo == false && maqver.necesita_reparo == false)
+                                if (maqrec.contador < maqrec.memory && maqalm.contador < maqalm.memory && maqes.contador < maqes.memory && maqem.contador < maqem.memory && maqver.contador < maqver.memory)
                                 {
                                     verificador = 1;
-                                    step = 0;
                                 }
                             }
 
